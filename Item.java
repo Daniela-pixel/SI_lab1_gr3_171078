@@ -55,3 +55,26 @@ class Item {
 		return 0;
 	}
 }
+class Receipt extends Item {
+	List<Item> list;
+
+	public Receipt(int id, String name, double price, char taxType, List<Item> list) {
+		super(id, name, price, taxType);
+		this.list = list;
+	}
+	
+	int totalSum() {
+		int sum = 0;
+		for(int i=0;i<list.size();i++) {
+			sum += list.get(i).getPrice();
+		}
+		return sum;
+	}
+	
+	double totalTax() {
+		double sum = 0.0;
+		for(int i=0;i<list.size();i++) sum += list.get(i).getTaxReturn();
+		return sum;
+	}
+	
+}
